@@ -35,4 +35,28 @@ print(grade['pey'])
 a = {'name':'pey', 'phone': '01012341234', 'birth':'1118'}
 print(list(a.keys()))
 
+# key List
+for k in a.keys():
+    print(k)
 
+print("-" * 40)
+
+# value List
+print(a.values())
+
+# key, value 쌍 얻기
+print(a.items())
+
+# clear
+a.clear()
+print(a)
+
+a = {'name':'pey', 'phone': '01012341234', 'birth':'1118'}
+print(a.get('name'))
+
+## default 값 가져오기
+print(a.get('foo','bar') )
+
+## key가 있는지 조사
+print('name' in a)
+print('email' in a)
