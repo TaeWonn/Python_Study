@@ -53,3 +53,21 @@ shutil.cop("src.txt","dst.txt")
 """
 import glob
 glob.glob("c:/dit/mark**")
+
+# tempfile
+"""
+파일을 임시로 만들어서 사용할 때 유용한 모듈이다.
+tempfile.mkstemp()는 중복되지 않는 
+임시 파일의 이름을 무작위로 만들어서 돌려준다.
+"""
+import tempfile
+f = tempfile.TemporaryFile()
+f.close()
+
+# time
+"""
+시간과 관련된 time 모듈에는 함수가 굉장히 많다. 
+그중 가장 유용한 몇 가지만 알아보자.
+
+time.time
+"""
