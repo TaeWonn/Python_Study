@@ -70,4 +70,115 @@ f.close()
 그중 가장 유용한 몇 가지만 알아보자.
 
 time.time
+현재 시간을 실수 형태로 돌려주는 함수이다.
+
+time.localtime
+time()이 돌려준 실수 값을 사용해서 
+연도, 월, 일, 시, 분 ,초 형태로 바꾸어 주는 함수이다.
+
+time.asctime
+위 localtime에 의해서 반환된 튜플 형태의 값을
+인수로 받아서 날짜와 시간을 알아보기 쉬운 형태로
+돌려주는 함수이다.
+
+time.ctime
+위 함수를 보다 간편하게 표시할 수 있다.
+asctime과 다른 점은 ctime은 항상 현재 시간만 돌려준다는 점이다.
+
+time.strftime
+포맷형태로 출력한다.
+
+포맷코드	설명	예
+%a	요일 줄임말	Mon
+%A	요일	Monday
+%b	달 줄임말	Jan
+%B	달	January
+%c	날짜와 시간을 출력함	06/01/01 17:22:21
+%d	날(day)	[01,31]
+%H	시간(hour)-24시간 출력 형태	[00,23]
+%I	시간(hour)-12시간 출력 형태	[01,12]
+%j	1년 중 누적 날짜	[001,366]
+%m	달	[01,12]
+%M	분	[01,59]
+%p	AM or PM	AM
+%S	초	[00,59]
+%U	1년 중 누적 주-일요일을 시작으로	[00,53]
+%w	숫자로 된 요일	[0(일요일),6]
+%W	1년 중 누적 주-월요일을 시작으로	[00,53]
+%x	현재 설정된 로케일에 기반한 날짜 출력	06/01/01
+%X	현재 설정된 로케일에 기반한 시간 출력	17:22:21
+%Y	년도 출력	2001
+%Z	시간대 출력	대한민국 표준시
+%%	문자	%
+%y	세기부분을 제외한 년도 출력	01
 """
+import time
+time.time()
+
+time.localtime(time.time())
+
+time.asctime(time.localtime(time.time()))
+
+time.ctime()
+
+time.strftime("yyyyMMdd", time.localtime(time.time()))
+
+# calendar
+import calendar
+"""
+calendar.calendar(연도)로 사용하면 그해의 전체 달력을 볼 수 있다.
+결괏값은 달력이 너무 길어 생략하겠다.
+
+
+"""
+print(calendar.calendar(2015))
+
+## 위와 똑같은 결괏값을 얻을 수 있다.
+calendar.prcal(2015)
+
+calendar.prmonth(2015, 12)
+
+calendar.weekday(2015, 12, 31)
+
+calendar.monthrange(2015, 12)
+
+# random
+import random
+random.random()
+
+random.randint(1, 10) # 1~ 10 사이의 난수 값 반환
+
+
+def random_pop (data):
+    number = random.randint(0, len(data) -1)
+    return data.pop(number)
+
+if __name__ == '__main__':
+    data = [1,2,3,4]
+    while data:
+        print(random_pop(data))
+
+import webbrowser
+webbrowser.open("https://google.com")
+webbrowser.open_new("https://google.com")
+
+
+import threading
+
+def long_task():
+    for i in range(5):
+        time.sleep(1)
+        print("working %s\n" % i)
+
+print("Start")
+
+threads = []
+for i range(5):
+    t = threading.Thread(target=long_task)
+    threads.append(t)
+
+for t in threads:
+    t.start()
+
+print("End")
+
